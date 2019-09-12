@@ -1,0 +1,20 @@
+﻿<Window x:Class="WebSocket.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebSocket"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="WebSocketServer" Height="419.091" Width="610">
+    <Grid>
+        <Label Content="监听端口" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="12" Height="23"/>
+        <TextBox Name="txtPort" HorizontalAlignment="Left" Height="23" Margin="70,10,0,0" TextWrapping="Wrap" Text="16000" FontSize="18" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnListen" Content="开始监听" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BtnListen_Click"/>
+        <TextBox Name="txtReceive" HorizontalAlignment="Left" Height="190" Margin="10,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="580"/>
+        <TextBox Name="txtSend" HorizontalAlignment="Left" Height="75" Margin="10,250,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="580"/>
+        <Button Content="发     送" HorizontalAlignment="Left" Margin="390,347,0,0" VerticalAlignment="Top" Width="200" Click="Button_Click"/>
+        <Button x:Name="btnDisListen" Content="停止监听" HorizontalAlignment="Left" Margin="295,11,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BtnDisListen_Click"/>
+
+    </Grid>
+</Window>

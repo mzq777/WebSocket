@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>WebSocketClient</title>
+</head>
+<body>
+    <div>
+        IP<input id="txtIP" type="text" value="localhost" />
+        Port<input id="txtPort" type="text" value="16000" />
+        <button id="btnConnect">连接</button>&#12288;&#12288;
+        <button id="btnDisConnect">断开连接</button>
+    </div>
+    <br />
+    <div>
+        <textarea id="txtReceive" rows="20" cols="100"></textarea>
+    </div>
+    <br />
+    <div>
+        <textarea id="txtSend" rows="5" cols="100"></textarea>
+    </div>
+    <br />
+    <div>
+        <button id="btnSend" type="button" style="margin-left:680px;">发送</button>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        jQuery(function () {
+            var wsImpl = window.WebSocket || window.MozWebSocket;
+            var ws;
+            //连接
+            jQuery('#btnConnect').click(function () {
+                var ip = jQuery('#txtIP').val();
+                var port = jQuery('#txtPort').val();
+                ws = new wsImpl('ws://' + ip + ':' + port + '/');
+
+                //打开连接回调
+                ws.onopen = function () {
+                    jQuery('#txtReceive').val(jQuery('#txtReceive').val() +"连接成功\n");
+                };
+
+                //接收到消息回调
+                ws.onmessage = function (evt) {
+                    jQuery('#txtReceive').val(jQuery('#txtReceive').val() + evt.origin + "\n" + evt.data+"\n");
+                };
+
+            });
+            //发送
+            jQuery('#btnSend').click(function () {
+                ws.send(jQuery('#txtSend').val());
+                jQuery('#txtReceive').val(jQuery('#txtReceive').val() + "self" + "\n" +jQuery('#txtSend').val()+"\n");
+                jQuery('#txtSend').val('');
+            });
+        });
+    </script>
+</body>
+</html>
